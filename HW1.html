@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+
+
+</style>
+</head>
+
+<body> 
+<h1 align="center">
+<font face="Bookman old Style">
+HW1(<a href="https://jsfiddle.net/roger11300229/e0ugv856/">Jsfiddle</a>)
+</font></h1>
+<div>
+  <button id='power'>On</button>
+  <img src="https://i.imgur.com/omX5Drl.png" style="position:absolute;top:0vw;left:0vw;width:70vw;z-index:-1">  
+</div>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+
+class Light {
+  
+  constructor(top,left) {  
+  	// create/append div dynamically
+    // https://stackoverflow.com/questions/14004117/create-div-and-append-div-dynamically
+    this.element = document.createElement ('div');
+    //this = iDiv;
+    this.element.id = 'light';
+    // set element style attribute
+    //https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+    this.element.style.cssText = "position:absolute;width:20px;height:20px;border-radius:15px;z-index:1"; 
+	  this.element.style.top = top;
+    this.element.style.left = left;
+    // CSS color property: https://www.w3schools.com/cssref/pr_text_color.asp
+    // hsl: https://www.w3schools.com/colors/colors_hsl.asp
+    this.element.style.background = "hsl(0, 0%, 38%)";
+    document.getElementsByTagName('body')[0].appendChild(this.element);
+  }
+
+	changeColor(hue,col2,col3) {
+  	// https://stackoverflow.com/questions/45147661/javascript-recursion-within-a-class/45147713
+    var self = this;
+  	
+    
+      var huech =hue+40;
+      if(huech>=360){
+          huech -=360;
+      }
+  	  self.element.style.background = "hsl(" + hue + ", "+col2+", "+col3+")";  
+      setTimeout (function() { self.changeColor(huech,col2,col3) } , 500);
+     
+    
+  }
+
+}
+
+
+
+
+init();
+
+$('#power').click ( function() {
+	if($('#power').text()=="On"){
+  $('#power').text ("Off");
+  change();
+  }else if($('#power').text()=="Off"){
+  $('#power').text ("On");
+  init();
+  }
+});
+function init() {
+  
+  light = new Light('10vw','33vw');
+  light1 = new Light('18vw','28vw');
+  light2 = new Light('18vw','40vw');
+  light3 = new Light('28vw','23vw');
+  light4 = new Light('28vw','33vw');
+  light5 = new Light('28vw','44vw');
+  light6 = new Light('38vw','20vw');
+  light7 = new Light('38vw','30vw');
+  light8 = new Light('38vw','40vw');
+  light9 = new Light('38vw','48vw');
+  light10 = new Light('48vw','16vw');
+  light11 = new Light('48vw','24vw');
+  light12 = new Light('48vw','35vw');
+  light13 = new Light('48vw','45vw');
+  light14 = new Light('48vw','52vw');
+  
+  
+  }
+function change(){
+  light.changeColor('0','100%','50%');
+  light1.changeColor('39','100%','50%');
+  light2.changeColor('79','100%','50%');
+  light3.changeColor('119','100%','50%');
+  light4.changeColor('159','100%','50%');
+  light5.changeColor('199','100%','50%');
+  light6.changeColor('239','100%','50%');
+  light7.changeColor('279','100%','50%');
+  light8.changeColor('319','100%','50%');
+  light9.changeColor('419','100%','50%');
+  light10.changeColor('129','100%','50%');
+  light11.changeColor('139','100%','50%');
+  light12.changeColor('19','100%','50%');
+  light13.changeColor('69','100%','50%');
+  light14.changeColor('89','100%','50%');
+}
+
+
+function onClickLight(){
+
+  
+}
+</script>
+</body>
+
+</html>
